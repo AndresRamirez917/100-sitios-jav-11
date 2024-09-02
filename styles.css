@@ -28,6 +28,14 @@ h2 {
     text-transform: uppercase;
 }
 
+::placeholder {
+    font-family: "Font Awesome 5 free";
+    font-weight: 600;
+    content: "f\007";
+    text-align: right;
+    color: #000;
+}
+
 #mainheader {
     background: url("/img/showcase.jpg");
     background-position: center;
