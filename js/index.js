@@ -33,4 +33,37 @@ async function getData() {
         }
     });
 }
+
+const btn_valida = document.getElementById('btn-valida')
+const valida = (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre');
+    const email = document.getElementById('email');
+    const mensaje = document.getElementById('mensaje');
+    const email_valido = email => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    let arr = [];
+    const arrMensajes = ["nombre", "email", "mensaje"]
+    arr.push(nombre, email, mensaje);
+    for(i = 0; i < arr.length; i++){
+        for(i = 0; i < arrMensajes.length; i++){
+            if(arr[i].value == ""){
+                alert(`El campo ${arrMensajes[i]} no puede estar vacío`)
+                return false;
+            }
+        }
+        if(!email_valido(email.value)){
+            alert(`El campo ${arrMensajes[1]} no tiene el formato correcto`)
+            return false;
+        }
+        nombre.value = "";
+        email.value = "";
+        mensaje.value = "";
+        alert("Los datos fueron enviados al ''servidor''")
+        return true;
+    }
+}
+
 getData()
+btn_valida.addEventListener("click", valida)
